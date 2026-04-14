@@ -1,0 +1,62 @@
+$white-main: #f4f1f5;
+$orange-light: #ff9b3d;
+$orange-main: #ff6a00;
+$orange-gradient: linear-gradient(180deg, #ff9b3dcb 0%, #ff6a00 100%);
+$inter: inter, sans-serif;
+$RussoOne: russoone, sans-serif;
+
+.footer {
+    background: #000;
+    padding: 60px 20px 20px;
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    &__logo img {
+        max-width: 140px;
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        a {
+            color: $white-main;
+            text-decoration: none;
+
+            &:hover {
+                color: $orange-main;
+            }
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        a {
+            color: $white-main;
+            text-decoration: none;
+        }
+    }
+
+    &__bottom {
+        text-align: center;
+        margin-top: 40px;
+        color: #777;
+        font-size: 14px;
+    }
+}
+
+.footer {
+    background: blue;
+}
