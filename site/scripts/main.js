@@ -2,18 +2,14 @@ async function loadComponents() {
     const elements = document.querySelectorAll('[data-include]');
 
     for (const element of elements) {
-        const path = element.getAttribute('data-include');
+        const path = element.dataset.include;
         if (!path) continue;
 
         try {
             const response = await fetch(path);
+            if (!response.ok) throw new Error(`Ошибка загрузки компонента: ${path}`);
 
-            if (!response.ok) {
-                throw new Error(`Ошибка загрузки компонента: ${path}`);
-            }
-
-            const html = await response.text();
-            element.innerHTML = html;
+            element.innerHTML = await response.text();
         } catch (error) {
             console.error(error);
         }
@@ -22,36 +18,30 @@ async function loadComponents() {
 
 function initHeader() {
     const header = document.querySelector('.header');
+    if (!header) return;
+
     const burger = document.querySelector('.header__burger');
     const mobileMenu = document.querySelector('.mobile-menu');
     const overlay = document.querySelector('.mobile-menu-overlay');
+    const body = document.body;
 
-    if (!header) return;
+    const setMenuState = (isOpen) => {
+        burger?.classList.toggle('active', isOpen);
+        mobileMenu?.classList.toggle('active', isOpen);
+        overlay?.classList.toggle('active', isOpen);
+        body.classList.toggle('menu-open', isOpen);
+        burger?.setAttribute('aria-expanded', String(isOpen));
+    };
 
-    function closeMenu() {
-        if (burger) burger.classList.remove('active');
-        if (mobileMenu) mobileMenu.classList.remove('active');
-        if (overlay) overlay.classList.remove('active');
-        document.body.classList.remove('menu-open');
-
-        if (burger) {
-            burger.setAttribute('aria-expanded', 'false');
-        }
-    }
+    const closeMenu = () => setMenuState(false);
 
     if (burger && mobileMenu && overlay) {
         burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-
-            const expanded = burger.classList.contains('active');
-            burger.setAttribute('aria-expanded', String(expanded));
+            const isOpen = !burger.classList.contains('active');
+            setMenuState(isOpen);
         });
 
         overlay.addEventListener('click', closeMenu);
-
         mobileMenu.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', closeMenu);
         });
@@ -61,18 +51,13 @@ function initHeader() {
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
+        const menuOpen = body.classList.contains('menu-open');
 
         header.classList.toggle('scrolled', currentScroll > 20);
-
-        if (
-            currentScroll > lastScroll &&
-            currentScroll > 120 &&
-            !document.body.classList.contains('menu-open')
-        ) {
-            header.classList.add('header--hidden');
-        } else {
-            header.classList.remove('header--hidden');
-        }
+        header.classList.toggle(
+            'header--hidden',
+            currentScroll > lastScroll && currentScroll > 120 && !menuOpen
+        );
 
         lastScroll = currentScroll;
     });

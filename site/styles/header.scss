@@ -1,9 +1,26 @@
 $white-main: #f4f1f5;
-$orange-light: #ff9b3d;
-$orange-main: #ff6a00;
-$orange-gradient: linear-gradient(180deg, #ff9b3dcb 0%, #ff6a00 100%);
+$orange-light: #d8a016;
+$orange-main: #e6b84d;
+$orange-gradient: linear-gradient(180deg, #e6b84d 0%, #d8a016 100%);
 $inter: inter, sans-serif;
 $RussoOne: russoone, sans-serif;
+
+
+// $accent-main: #d8a016;
+// $accent-soft: #e6b84d;
+// $accent-gradient: linear-gradient(135deg, #e6b84d 0%, #d8a016 100%);
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow-x: clip;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
 
 .header {
     width: 100%;
@@ -19,8 +36,15 @@ $RussoOne: russoone, sans-serif;
     padding: 20px 0;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, opacity 0.3s ease, padding 0.3s ease, background 0.3s ease;
 
-    transition: all 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+
+    &.hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
 
     &.scrolled {
         padding: 15px 0;
@@ -29,9 +53,12 @@ $RussoOne: russoone, sans-serif;
 
     &__logo {
         margin-left: 40px;
+        z-index: 2000;
 
         img {
             max-width: 140px;
+            height: auto;
+            display: block;
         }
     }
 
@@ -40,21 +67,51 @@ $RussoOne: russoone, sans-serif;
 
         ul {
             display: flex;
-            gap: 18px;
             align-items: center;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
 
             li {
                 list-style: none;
 
                 a {
+                    position: relative;
                     color: $white-main;
                     text-decoration: none;
-                    font-size: 14px;
+                    font-size: clamp(14px, 1.2vw, 18px);
                     font-family: $RussoOne;
+                    letter-spacing: 1px;
                     transition: 0.3s;
 
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -6px;
+                        width: 0;
+                        height: 2px;
+                        background: $orange-main;
+                        transition: 0.35s ease;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+
+                &:last-child a {
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    background: $orange-gradient;
+                    color: #fff;
+
+                    &::after {
+                        display: none;
+                    }
+
                     &:hover {
-                        color: $orange-main;
+                        color: #000;
                     }
                 }
             }
@@ -79,16 +136,17 @@ $RussoOne: russoone, sans-serif;
         background: none;
         border: none;
         cursor: pointer;
+        z-index: 2000;
 
         span {
-            width: 28px;
+            width: 30px;
             height: 3px;
             background: $white-main;
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
         &.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
         &.active span:nth-child(2) {
@@ -96,7 +154,7 @@ $RussoOne: russoone, sans-serif;
         }
 
         &.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(6px, -6px);
         }
     }
 }
@@ -104,54 +162,127 @@ $RussoOne: russoone, sans-serif;
 .mobile-menu-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
+    pointer-events: none;
+    transition: 0.4s ease;
     z-index: 900;
 
     &.active {
         opacity: 1;
-        visibility: visible;
+        pointer-events: all;
     }
 }
 
 .mobile-menu {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: #111;
-    padding: 30px;
-    border-radius: 16px;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 420px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(180deg, #0a0a0a, #111);
+    box-shadow: -20px 0 60px rgba(216, 160, 22, 0.25);
+
+    transform: translateX(100%);
+    transition: 0.5s cubic-bezier(.77, 0, .18, 1);
     z-index: 1000;
 
     &.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateX(0);
     }
 
     ul {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 36px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+
+        li {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: 0.4s ease;
+        }
+    }
+
+    &.active ul li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &.active ul li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    &.active ul li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    &.active ul li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    &.active ul li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    &.active ul li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    &.active ul li:nth-child(6) {
+        transition-delay: 0.6s;
+    }
+
+    &.active ul li:nth-child(7) {
+        transition-delay: 0.7s;
     }
 
     a {
+        position: relative;
         color: $white-main;
-        font-size: 20px;
         text-decoration: none;
+        font-size: 28px;
+        font-family: $RussoOne;
+        letter-spacing: 1px;
+        transition: 0.3s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: $orange-main;
+            transition: 0.35s ease;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
     }
 
     &__cta {
+        display: inline-block;
         padding: 12px 20px;
         background: $orange-gradient;
         border-radius: 8px;
+
+        &::after {
+            display: none;
+        }
     }
 }
 
@@ -163,4 +294,46 @@ $RussoOne: russoone, sans-serif;
     .header__burger {
         display: flex;
     }
+}
+
+@media (max-width: 768px) {
+    .header__logo {
+        margin-left: 20px;
+    }
+
+    .header__burger {
+        margin-right: 20px;
+    }
+
+    .header__logo img {
+        max-width: 100px;
+    }
+
+    .mobile-menu {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__logo img {
+        max-width: 80px;
+    }
+
+    .mobile-menu {
+        width: 88%;
+    }
+
+    .mobile-menu a {
+        font-size: 22px;
+    }
+}
+
+@font-face {
+    font-family: inter;
+    src: url(../fonts/Inter_18pt-Medium.ttf);
+}
+
+@font-face {
+    font-family: russoone;
+    src: url(../fonts/RussoOne-Regular.ttf);
 }
