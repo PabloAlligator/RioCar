@@ -67,3 +67,64 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initHeader();
 });
+
+// 3. Плавный скролл к секциям
+
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header');
+    const burger = document.querySelector('.header__burger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    const body = document.body;
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
+            const headerHeight = header?.offsetHeight || 0;
+            const topOffset = headerHeight + 20;
+            const topPos = target.getBoundingClientRect().top + window.pageYOffset - topOffset;
+
+            window.scrollTo({
+                top: topPos,
+                behavior: 'smooth'
+            });
+
+            if (burger && mobileMenu && burger.classList.contains('active')) {
+                burger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay?.classList.remove('active');
+                body.classList.remove('menu-open');
+                burger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+});
+
+//  FAQ
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq__item');
+
+    faqItems.forEach((item) => {
+        const question = item.querySelector('.faq__question');
+
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            faqItems.forEach((faqItem) => {
+                faqItem.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
