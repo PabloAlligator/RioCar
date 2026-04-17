@@ -1,62 +1,233 @@
-$white-main: #f4f1f5;
-$orange-light: #ff9b3d;
-$orange-main: #ff6a00;
-$orange-gradient: linear-gradient(180deg, #ff9b3dcb 0%, #ff6a00 100%);
-$inter: inter, sans-serif;
-$RussoOne: russoone, sans-serif;
+// Цвета
+$black-main: #000000;
+$black-soft: #131314;
+$black-card: #111111;
+
+$white-main: #ffffff;
+$white-soft: #cfcfcf;
+$white-muted: #8a8a8a;
+
+$accent-main: #d8a016;
+$accent-soft: #e6b84d;
+$accent-gradient: linear-gradient(135deg, #e6b84d 0%, #d8a016 100%);
+
+// UI
+$border-light: rgba(255, 255, 255, 0.1);
+$border-soft: rgba(255, 255, 255, 0.05);
+
+$glass-bg: rgba(255, 255, 255, 0.03);
+$glass-blur: blur(10px);
+
+$shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+$shadow-accent: 0 10px 40px rgba(255, 106, 0, 0.2);
+
+// Типографика
+$font-main: inter, sans-serif;
+$font-title: russoone, sans-serif;
+
+// Анимации
+$transition-fast: 0.2s ease;
+$transition-main: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Радиусы
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
 
 .footer {
-    background: #000;
-    padding: 60px 20px 20px;
+    position: relative;
+    padding: 90px 20px 24px;
+    background: $black-main;
+    border-top: 1px solid $border-soft;
+    overflow: hidden;
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     top: -120px;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    //     width: 520px;
+    //     height: 520px;
+    //     background: radial-gradient(circle,
+    //             rgba(216, 160, 22, 0.14) 0%,
+    //             rgba(216, 160, 22, 0.05) 35%,
+    //             rgba(216, 160, 22, 0) 70%);
+    //     pointer-events: none;
+    //     filter: blur(20px);
+    // }
 
     &__container {
-        max-width: 1200px;
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
         margin: 0 auto;
-
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 30px;
     }
 
-    &__logo img {
-        max-width: 140px;
+    &__top {
+        display: grid;
+        grid-template-columns: minmax(280px, 1.2fr) minmax(180px, 0.8fr) minmax(240px, 1fr);
+        gap: 48px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid $border-soft;
+    }
+
+    &__brand,
+    &__menu,
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__logo {
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 22px;
+
+        img {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &__text {
+        max-width: 420px;
+        color: $white-soft;
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    &__menu,
+    &__contacts {
+        h3 {
+            margin-bottom: 22px;
+            color: $white-main;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+        }
     }
 
     &__nav {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 14px;
 
         a {
-            color: $white-main;
-            text-decoration: none;
+            width: fit-content;
+            color: $white-soft;
+            font-size: 15px;
+            line-height: 1.4;
+            transition: $transition-main;
 
             &:hover {
-                color: $orange-main;
+                color: $accent-main;
+                transform: translateX(4px);
             }
         }
     }
 
-    &__contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    &__contact,
+    &__address {
+        color: $white-soft;
+        font-size: 15px;
+        line-height: 1.6;
+    }
 
-        a {
-            color: $white-main;
-            text-decoration: none;
-        }
+    &__contacts {
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    &__contact:hover {
+        color: $accent-main;
+    }
+
+    &__btn {
+        margin-top: 16px;
     }
 
     &__bottom {
-        text-align: center;
-        margin-top: 40px;
-        color: #777;
-        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding-top: 22px;
+
+        p,
+        a {
+            color: $white-muted;
+            font-size: 14px;
+        }
+
+        a:hover {
+            color: $accent-main;
+        }
     }
 }
 
-.footer {
-    background: blue;
+@media (max-width: 1100px) {
+    .footer {
+        &__top {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        &__brand {
+            grid-column: 1 / -1;
+        }
+
+        &__text {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 72px 20px 24px;
+
+        &__top {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            padding-bottom: 28px;
+        }
+
+        &__logo img {
+            width: 132px;
+        }
+
+        &__menu,
+        &__contacts {
+            h3 {
+                margin-bottom: 16px;
+            }
+        }
+
+        &__bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 18px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 64px 16px 20px;
+
+        &__text,
+        &__contact,
+        &__address,
+        &__nav a {
+            font-size: 14px;
+        }
+
+        &__bottom {
+            p,
+            a {
+                font-size: 13px;
+            }
+        }
+    }
 }

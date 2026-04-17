@@ -66,6 +66,7 @@ function initHeader() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initHeader();
+    initRoutesPreviewReveal();
 });
 
 // 3. Плавный скролл к секциям
@@ -128,3 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function initRoutesPreviewReveal() {
+    const section = document.querySelector('.routes-preview');
+    if (!section) return;
+
+    const revealItems = section.querySelectorAll('.reveal');
+    if (!revealItems.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                section.classList.add('is-visible');
+                obs.unobserve(section);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    observer.observe(section);
+}
