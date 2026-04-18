@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/cars.css" />
+    <title>RioCar</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header__logo">
+            <a href="#home" aria-label="На главную">
+                <img src="site/image/Logo.png" alt="RioCar">
+            </a>
+        </div>
+
+        <nav class="header__nav header__nav--desktop">
+            <ul>
+                <li><a href="#home">ГЛАВНАЯ</a></li>
+                <li><a href="site/pages/cars.html">АВТОПАРК</a></li>
+                <li><a href="#otzyv">ОТЗЫВЫ</a></li>
+                <li><a href="#contacts">КОНТАКТЫ</a></li>
+                <li><a href="#contacts">ТВОЁ ПУТЕШЕСТВИЕ</a></li>
+                <li><a href="#form" class="header__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
+            </ul>
+        </nav>
+
+        <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="mobile-menu-overlay"></div>
+
+        <nav class="mobile-menu">
+            <ul>
+                <li><a href="#advantages">ГЛАВНАЯ</a></li>
+                <li><a href="#work">АВТОПАРК</a></li>
+                <li><a href="#country">ОТЗЫВЫ</a></li>
+                <li><a href="#catalog">КОНТАКТЫ</a></li>
+                <li><a href="#contacts">ТВОЁ ПУТЕШЕСТВИЕ</a></li>
+                <li><a href="#form" class="mobile-menu__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="cars-hero">
+            <div class="cars-hero__container">
+
+                <h1 class="cars-hero__title">
+                    Аренда автомобилей в Абакане
+                    <span>с премиальным сервисом</span>
+                </h1>
+
+                <p class="cars-hero__text">
+                    Выберите автомобиль для города, поездок по Хакасии и дальних маршрутов.
+                    Все машины готовы к аренде — без лишних формальностей.
+                </p>
+
+                <div class="cars-hero__filters">
+                    <button class="cars-filter active" data-filter="all">Все</button>
+                    <button class="cars-filter" data-filter="econom">Эконом</button>
+                    <button class="cars-filter" data-filter="comfort">Комфорт</button>
+                    <button class="cars-filter" data-filter="premium">Премиум</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- машины -->
+
+        <section class="cars" id="catalog" aria-labelledby="catalog-title">
+            <div class="cars-container">
+                <div class="cars__title">
+                    <h2 id="catalog-title">
+                        НАШ <br>
+                        <span>АВТОПАРК</span>
+                    </h2>
+
+                    <div class="cars__title-inner">
+                        <p>
+                            Автомобили для аренды в Абакане, поездок по Хакасии и маршрутов за пределами города.
+                            Подберите подходящий вариант по классу, комфорту и бюджету.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cars__inner" role="list" aria-label="Автомобили RioCar для аренды">
+
+                    <!-- 1 -->
+                    <div class="cars-card" role="listitem" data-category="comfort" data-title="Toyota Camry"
+                        data-price="от 4 500 ₽ / сутки" data-badge="Комфорт" data-year="2022"
+                        data-engine="2.5л (181 л.с.) Бензин" data-mileage="30 000 км" data-drive="Передний"
+                        data-gearbox="Автомат" data-complectation="Комфорт + климат-контроль + камера заднего вида"
+                        data-image="../image/cars/camry.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/black-lexus.jpg" alt="Toyota Camry для аренды в Абакане" loading="lazy"
+                                decoding="async">
+                            <span class="cars-card__badge">КОМФОРТ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">Toyota Camry</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2022</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2.5л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 4 500 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле Toyota Camry">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="cars-card" role="listitem" data-category="premium" data-title="BMW 5 Series"
+                        data-price="от 8 000 ₽ / сутки" data-badge="Премиум" data-year="2023"
+                        data-engine="2.0л (249 л.с.) Бензин" data-mileage="12 000 км" data-drive="Задний"
+                        data-gearbox="Автомат" data-complectation="Премиум + кожаный салон + мультимедиа"
+                        data-image="../image/cars/bmw.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/yellow-lexus.jpg" alt="BMW 5 Series для аренды в Абакане" loading="lazy"
+                                decoding="async">
+                            <span class="cars-card__badge">ПРЕМИУМ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">BMW 5 Series</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2023</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2.0л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 8 000 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле BMW 5 Series">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="cars-card" role="listitem" data-category="econom" data-title="Hyundai Solaris"
+                        data-price="от 2 000 ₽ / сутки" data-badge="Эконом" data-year="2021"
+                        data-engine="1.6л (123 л.с.) Бензин" data-mileage="50 000 км" data-drive="Передний"
+                        data-gearbox="Автомат" data-complectation="Эконом + кондиционер + подогрев сидений"
+                        data-image="../image/cars/solaris.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/cars/solaris.jpg" alt="Hyundai Solaris для аренды в Абакане"
+                                loading="lazy" decoding="async">
+                            <span class="cars-card__badge">ЭКОНОМ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">Hyundai Solaris</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2021</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>1.6л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 2 000 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле Hyundai Solaris">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="cars-card" role="listitem" data-category="comfort" data-title="Kia K5"
+                        data-price="от 5 000 ₽ / сутки" data-badge="Комфорт" data-year="2022"
+                        data-engine="2.0л (150 л.с.) Бензин" data-mileage="25 000 км" data-drive="Передний"
+                        data-gearbox="Автомат" data-complectation="Комфорт + большой салон + круиз-контроль"
+                        data-image="../image/cars/k5.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/cars/k5.jpg" alt="Kia K5 для аренды в Абакане" loading="lazy"
+                                decoding="async">
+                            <span class="cars-card__badge">КОМФОРТ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">Kia K5</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2022</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2.0л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 5 000 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле Kia K5">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="cars-card" role="listitem" data-category="premium" data-title="Mercedes E-Class"
+                        data-price="от 9 000 ₽ / сутки" data-badge="Премиум" data-year="2023"
+                        data-engine="2.0л (197 л.с.) Бензин" data-mileage="10 000 км" data-drive="Задний"
+                        data-gearbox="Автомат" data-complectation="Премиум + бизнес-класс + ассистенты вождения"
+                        data-image="../image/cars/mercedes.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/cars/mercedes.jpg" alt="Mercedes E-Class для аренды в Абакане"
+                                loading="lazy" decoding="async">
+                            <span class="cars-card__badge">ПРЕМИУМ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">Mercedes E-Class</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2023</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2.0л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 9 000 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле Mercedes E-Class">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="cars-card" role="listitem" data-category="econom" data-title="Lada Vesta"
+                        data-price="от 1 800 ₽ / сутки" data-badge="Эконом" data-year="2020"
+                        data-engine="1.6л (106 л.с.) Бензин" data-mileage="60 000 км" data-drive="Передний"
+                        data-gearbox="Механика" data-complectation="Эконом + просторный салон + кондиционер"
+                        data-image="../image/cars/vesta.jpg">
+
+                        <div class="cars-card__image">
+                            <img src="../image/cars/vesta.jpg" alt="Lada Vesta для аренды в Абакане" loading="lazy"
+                                decoding="async">
+                            <span class="cars-card__badge">ЭКОНОМ</span>
+                        </div>
+
+                        <div class="cars-card__content">
+                            <h3 class="cars-card__title">Lada Vesta</h3>
+
+                            <div class="cars-card__meta">
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>2020</span>
+                                </div>
+
+                                <div class="cars-card__meta-item">
+                                    <span class="cars-card__dot" aria-hidden="true"></span>
+                                    <span>1.6л Бензин</span>
+                                </div>
+                            </div>
+
+                            <div class="cars-card__bottom">
+                                <div class="cars-card__price">от 1 800 ₽</div>
+                                <button type="button" class="cars-card__arrow"
+                                    aria-label="Подробнее об автомобиле Lada Vesta">›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- модалка -->
+            <div class="cars-card__modal" id="carsModal" role="dialog" aria-modal="true"
+                aria-labelledby="carsModalTitle" aria-hidden="true">
+                <div class="cars-card__modal-overlay" aria-hidden="true"></div>
+
+                <div class="cars-card__modal-body">
+                    <button class="cars-card__modal-close" type="button"
+                        aria-label="Закрыть карточку автомобиля">×</button>
+
+                    <div class="cars-card__modal-scroll">
+                        <div class="cars-card__modal-image">
+                            <img id="carsModalPhoto" src="" alt="Фотография автомобиля">
+                        </div>
+
+                        <div class="cars-card__modal-content">
+                            <span class="cars-card__modal-badge" id="carsModalBadge">Класс автомобиля</span>
+
+                            <h3 class="cars-card__modal-title" id="carsModalTitle">Название автомобиля</h3>
+
+                            <div class="cars-card__modal-price" id="carsModalPrice">от 0 ₽</div>
+
+                            <div class="cars-card__modal-complectation">
+                                <span>Описание / оснащение</span>
+                                <strong id="carsModalComplectation">—</strong>
+                            </div>
+
+                            <div class="cars-card__modal-info">
+                                <div><span>Год:</span><strong id="carsModalYear">—</strong></div>
+                                <div><span>Двигатель:</span><strong id="carsModalEngine">—</strong></div>
+                                <div><span>Пробег:</span><strong id="carsModalMileage">—</strong></div>
+                                <div><span>Привод:</span><strong id="carsModalDrive">—</strong></div>
+                                <div><span>Коробка:</span><strong id="carsModalGearbox">—</strong></div>
+                            </div>
+
+                            <a href="#form" class="cars-card__modal-btn"
+                                aria-label="Перейти к форме заявки на автомобиль">
+                                Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- доп блок -->
+        <section class="cars-seo">
+            <div class="cars-seo__container">
+
+                <h2>Прокат автомобилей в Абакане</h2>
+
+                <p>
+                    RioCar предлагает аренду автомобилей в Абакане для поездок по городу,
+                    путешествий по Хакасии и дальних маршрутов. В автопарке представлены
+                    автомобили разных классов — от эконом до премиум.
+                </p>
+
+                <p>
+                    Вы можете арендовать автомобиль без водителя или заказать машину с водителем.
+                    Мы подберём оптимальный вариант под ваши задачи и бюджет.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="#home" class="footer__logo" aria-label="На главную">
+                        <img src="site/image/Logo.png" alt="RioCar">
+                    </a>
+
+                    <p class="footer__text">
+                        Аренда автомобилей в Абакане для города, поездок по Хакасии
+                        и путешествий за её пределы. Честные условия, ухоженный
+                        автопарк и удобное бронирование.
+                    </p>
+                </div>
+
+                <div class="footer__menu">
+                    <h3>Навигация</h3>
+                    <nav class="footer__nav" aria-label="Навигация по сайту">
+                        <a href="#home">Главная</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#contacts">Контакты</a>
+                        <a href="#form">Оставить заявку</a>
+                    </nav>
+                </div>
+
+                <div class="footer__contacts">
+                    <h3>Контакты</h3>
+
+                    <a href="tel:+79135444442" class="footer__contact">
+                        +7 (913) 544-44-42
+                    </a>
+
+                    <a href="https://wa.me/79135444442" target="_blank" rel="noopener noreferrer"
+                        class="footer__contact">
+                        Написать в MAX
+                    </a>
+
+                    <p class="footer__address">
+                        г. Абакан, ул. Торговая, 1
+                    </p>
+
+                    <p class="footer__address">
+                        ИНН 2465350820
+                    </p>
+
+                    <a href="https://wa.me/79135444442" target="_blank" rel="noopener noreferrer"
+                        class="footer__contact">
+                        Политика конфиденциальности
+                    </a>
+
+                    <a href="#form" class="footer__btn btn btn--primary">
+                        Забронировать авто
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© RioCar, 2026. Все права защищены.</p>
+                <a href="#home">Наверх</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/cars.js"></script>
+</body>
+
+</html>
