@@ -123,6 +123,20 @@ function initCarsFilter() {
     });
 }
 
+function buildCarFormLink(card) {
+    const title = card.dataset.title || '';
+    const year = card.dataset.year || '';
+    const price = card.dataset.price || '';
+
+    const params = new URLSearchParams({
+        car: title,
+        year,
+        price
+    });
+
+    return `../../index.html?${params.toString()}#form`;
+}
+
 function initCarsModal() {
     const cards = document.querySelectorAll('.cars-card');
     const modal = document.getElementById('carsModal');
@@ -140,6 +154,7 @@ function initCarsModal() {
     const modalBadge = document.getElementById('carsModalBadge');
     const modalComplectation = document.getElementById('carsModalComplectation');
     const modalRental = document.getElementById('carsModalRental');
+    const modalBtn = modal.querySelector('.cars-card__modal-btn');
 
     const closeBtn = modal.querySelector('.cars-card__modal-close');
     const modalOverlay = modal.querySelector('.cars-card__modal-overlay');
@@ -165,6 +180,10 @@ function initCarsModal() {
             if (modalPhoto) {
                 modalPhoto.src = card.dataset.image || '';
                 modalPhoto.alt = card.dataset.title || 'Автомобиль';
+            }
+
+            if (modalBtn) {
+                modalBtn.href = buildCarFormLink(card);
             }
 
             modal.classList.add('active');
@@ -193,5 +212,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarsFilter();
     initCarsModal();
 });
-
-

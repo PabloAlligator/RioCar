@@ -12,8 +12,8 @@
 
     <header class="header">
         <div class="header__logo">
-            <a href="#home" aria-label="На главную">
-                <img src="site/image/Logo.png" alt="RioCar">
+            <a href="#travel-hero" aria-label="На главную">
+                <img src="../image/Logo.png" alt="RioCar">
             </a>
         </div>
 
@@ -21,10 +21,10 @@
             <ul>
                 <li><a href="../../index.html">ГЛАВНАЯ</a></li>
                 <li><a href="../pages/cars.html">АВТОПАРК</a></li>
-                <!-- <li><a href="#otzyv">ОТЗЫВЫ</a></li> -->
-                <li><a href="#contacts">КОНТАКТЫ</a></li>
+                <li><a href="../../index.html#reviews">ОТЗЫВЫ</a></li>
+                <li><a href="../../index.html#contacts">КОНТАКТЫ</a></li>
                 <li><a href="#travel-hero">ТВОЁ ПУТЕШЕСТВИЕ</a></li>
-                <li><a href="#form" class="header__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
+                <li><a href="../../index.html#form" class="header__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
             </ul>
         </nav>
 
@@ -40,10 +40,10 @@
             <ul>
                 <li><a href="#advantages">ГЛАВНАЯ</a></li>
                 <li><a href="#work">АВТОПАРК</a></li>
-                <!-- <li><a href="#country">ОТЗЫВЫ</a></li> -->
-                <li><a href="#catalog">КОНТАКТЫ</a></li>
+                <li><a href="../../index.html#reviews">ОТЗЫВЫ</a></li>
+                <li><a href="../../index.html#contacts">КОНТАКТЫ</a></li>
                 <li><a href="../pages/travel.html">ТВОЁ ПУТЕШЕСТВИЕ</a></li>
-                <li><a href="#form" class="mobile-menu__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
+                <li><a href="../../index.html#form" class="mobile-menu__cta">ОСТАВИТЬ ЗАЯВКУ</a></li>
             </ul>
         </nav>
     </header>
@@ -67,7 +67,7 @@
 
                 <div class="travel-hero__actions">
                     <a href="#travel-directions" class="btn btn--primary">Подобрать маршрут</a>
-                    <a href="index.html#catalog" class="btn btn--secondary">Выбрать автомобиль</a>
+                    <a href="../pages/cars.html" class="btn btn--secondary">Выбрать автомобиль</a>
                 </div>
             </div>
         </section>
@@ -121,9 +121,11 @@
                 </div>
 
                 <div class="travel-directions__grid">
+
+                    <!-- шира -->
                     <article class="travel-card" data-category="weekend">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/shira.jpg" alt="Ширинские озёра">
+                            <img src="../image/travel/shira.WEBP" alt="Ширинские озёра">
                         </div>
 
                         <div class="travel-card__content">
@@ -136,9 +138,10 @@
                         </div>
                     </article>
 
+                    <!-- туим -->
                     <article class="travel-card" data-category="day">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/tuim.jpg" alt="Туимский провал">
+                            <img src="../image/travel/tuim.WEBP" alt="Туимский провал">
                         </div>
 
                         <div class="travel-card__content">
@@ -151,9 +154,10 @@
                         </div>
                     </article>
 
-                    <article class="travel-card">
+                    <!-- сундуки -->
+                    <article class="travel-card" data-category="evening day">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/sunduki.jpg" alt="Сундуки">
+                            <img src="../image/travel/sunduki.WEBP" alt="Сундуки">
                         </div>
 
                         <div class="travel-card__content">
@@ -166,9 +170,58 @@
                         </div>
                     </article>
 
-                    <article class="travel-card">
+                    <!-- западный саян -->
+                    <article class="travel-card" data-category="evening day">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/ges.jpg" alt="Саяно-Шушенская ГЭС">
+                            <img src="../image/travel/sunduki.WEBP" alt="Сундуки">
+                        </div>
+
+                        <div class="travel-card__content">
+                            <h3>Западный Саян</h3>
+                            <p>
+                                горный регион с дикой природой, перевалами и панорамными видами, где дорога сама
+                                становится частью приключения.
+                            </p>
+                            <a href="#" class="travel-card__link">Построить маршрут</a>
+                        </div>
+                    </article>
+
+                    <!-- бородинская пещера -->
+                    <article class="travel-card" data-category="day">
+                        <div class="travel-card__image">
+                            <img src="../image/travel/borodinskya.webp" alt="Сундуки">
+                        </div>
+
+                        <div class="travel-card__content">
+                            <h3>Бородинская пещера</h3>
+                            <p>
+                                уникальная карстовая пещера с подземными залами и кристаллами, идеально подходит для
+                                необычного и атмосферного путешествия.
+                            </p>
+                            <a href="#" class="travel-card__link">Построить маршрут</a>
+                        </div>
+                    </article>
+
+                    <!-- красноярское водохранилице -->
+                    <article class="travel-card" data-category="long weekend">
+                        <div class="travel-card__image">
+                            <img src="../image/travel/krskVodoh.png" alt="Сундуки">
+                        </div>
+
+                        <div class="travel-card__content">
+                            <h3>Красноярское водохранилище</h3>
+                            <p>
+                                огромная водная гладь с живописными берегами и закатами, создающая ощущение настоящего
+                                «сибирского моря».
+                            </p>
+                            <a href="#" class="travel-card__link">Построить маршрут</a>
+                        </div>
+                    </article>
+
+                    <!--  сшгес -->
+                    <article class="travel-card" data-category="evening day">
+                        <div class="travel-card__image">
+                            <img src="../image/travel/gas.WEBP" alt="Саяно-Шушенская ГЭС">
                         </div>
 
                         <div class="travel-card__content">
@@ -181,9 +234,10 @@
                         </div>
                     </article>
 
-                    <article class="travel-card">
+                    <!-- ивановские озера -->
+                    <article class="travel-card" data-category="weekend">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/ivan.jpg" alt="Ивановские озёра">
+                            <img src="../image/travel/ivanovskie.webp" alt="Ивановские озёра">
                         </div>
 
                         <div class="travel-card__content">
@@ -196,9 +250,10 @@
                         </div>
                     </article>
 
+                    <!-- ергаки -->
                     <article class="travel-card" data-category="long">
                         <div class="travel-card__image">
-                            <img src="site/image/travel/ergaki.jpg" alt="Ергаки">
+                            <img src="../image/travel/ergaki.WEBP" alt="Ергаки">
                         </div>
 
                         <div class="travel-card__content">
@@ -277,7 +332,7 @@
 
                 <div class="travel-cta__actions">
                     <a href="#travel-directions" class="btn btn--primary">Смотреть маршруты</a>
-                    <a href="index.html#form" class="btn btn--secondary">Оставить заявку</a>
+                    <a href="../../index.html#contacts" class="btn btn--secondary">Оставить заявку</a>
                 </div>
             </div>
         </section>
@@ -302,10 +357,11 @@
                 <div class="footer__menu">
                     <h3>Навигация</h3>
                     <nav class="footer__nav" aria-label="Навигация по сайту">
-                        <a href="#home">Главная</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#contacts">Контакты</a>
-                        <a href="#form">Оставить заявку</a>
+                        <a href="../../index.html">Главная</a>
+                        <a href="../../index.html#reviews">Отзывы</a>
+                        <a href="../../index.html#faq">FAQ</a>
+                        <a href="../../index.html#contacts">Контакты</a>
+                        <a href="../../index.html#form">Оставить заявку</a>
                     </nav>
                 </div>
 
@@ -338,7 +394,7 @@
                         Разработка и дизайн сайта
                     </a>
 
-                    <a href="#form" class="footer__btn btn btn--primary">
+                    <a href="../../index.html#form" class="footer__btn btn btn--primary">
                         Забронировать авто
                     </a>
 
@@ -352,6 +408,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="../scripts/travel.js"></script>
 </body>
 

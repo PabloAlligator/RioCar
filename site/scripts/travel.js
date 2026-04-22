@@ -61,6 +61,7 @@ function initHeader() {
     });
 }
 
+// скролл
 function initSmoothScroll() {
     const body = document.body;
 
@@ -99,31 +100,98 @@ function initSmoothScroll() {
     });
 }
 
+// фильтры
+
 function initTravelFilters() {
     const filters = document.querySelectorAll('.travel-filter');
-    const cards = document.querySelectorAll('.travel-card');
+    const cards = Array.from(document.querySelectorAll('.travel-card'));
 
-    if (!filters.length || !cards.length) return;
+    if (!filters.length || !cards.length || typeof gsap === 'undefined') return;
+
+    let isAnimating = false;
 
     filters.forEach((btn) => {
         btn.addEventListener('click', () => {
-            filters.forEach((b) => b.classList.remove('active'));
-            btn.classList.add('active');
+            if (isAnimating) return;
 
             const filter = btn.dataset.filter;
 
-            cards.forEach((card) => {
-                const categories = (card.dataset.category || '').split(' ');
+            filters.forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
 
-                if (filter === 'all' || categories.includes(filter)) {
-                    card.hidden = false;
-                } else {
-                    card.hidden = true;
+            const showCards = [];
+            const hideCards = [];
+
+            cards.forEach((card) => {
+                const categories = (card.dataset.category || '')
+                    .split(' ')
+                    .map((item) => item.trim())
+                    .filter(Boolean);
+
+                const isVisible = filter === 'all' || categories.includes(filter);
+                const isCurrentlyHidden = getComputedStyle(card).display === 'none';
+
+                if (isVisible) {
+                    showCards.push(card);
+                } else if (!isCurrentlyHidden) {
+                    hideCards.push(card);
                 }
+            });
+
+            isAnimating = true;
+
+            const tl = gsap.timeline({
+                defaults: { ease: 'power2.out' },
+                onComplete: () => {
+                    isAnimating = false;
+                }
+            });
+
+            if (hideCards.length) {
+                tl.to(hideCards, {
+                    opacity: 0,
+                    y: 18,
+                    scale: 0.985,
+                    duration: 0.22,
+                    stagger: 0.04,
+                    onComplete: () => {
+                        hideCards.forEach((card) => {
+                            card.style.display = 'none';
+                        });
+                    }
+                });
+            }
+
+            tl.add(() => {
+                showCards.forEach((card) => {
+                    const hidden = getComputedStyle(card).display === 'none';
+
+                    if (hidden) {
+                        card.style.display = '';
+                        gsap.set(card, {
+                            opacity: 0,
+                            y: 18,
+                            scale: 0.985
+                        });
+                    }
+                });
+            });
+
+            const isAll = filter === 'all';
+            tl.to(showCards, {
+                opacity: 1,
+                y: 0,
+                scale: isAll ? 1 : 1,
+                duration: isAll ? 0.45 : 0.3,
+                stagger: isAll ? 0.08 : 0.04,
+                ease: isAll ? 'power3.out' : 'power2.out',
+                clearProps: 'transform,opacity'
             });
         });
     });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeader();

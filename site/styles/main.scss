@@ -22,7 +22,7 @@ $glass-bg: rgba(255, 255, 255, 0.03);
 $glass-blur: blur(10px);
 
 $shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
-$shadow-accent: 0 10px 40px rgba(255, 106, 0, 0.2);
+$shadow-accent: 0 10px 40px rgba(255, 230, 0, 0.2);
 
 // Типографика
 $font-main: inter, sans-serif;
@@ -816,6 +816,274 @@ ol {
     }
 }
 
+// reviews
+
+.reviews {
+    width: 100%;
+    padding: 64px 40px;
+    position: relative;
+    overflow: hidden;
+    background: $black-soft;
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     inset: 0;
+    //     background:
+    //         radial-gradient(circle at 15% 18%, rgba($accent-main, 0.12) 0%, transparent 40%),
+    //         radial-gradient(circle at 85% 80%, rgba($accent-main, 0.08) 0%, transparent 40%);
+    //     pointer-events: none;
+    // }
+
+    &-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1420px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .general-title {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        h2 {
+            color: $white-main;
+            font-family: $font-title;
+            font-size: 42px;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: $accent-main;
+            font-family: $font-title;
+            font-size: 28px;
+            max-width: 720px;
+        }
+    }
+
+    &-platforms {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    &-platform {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px;
+        border-radius: 20px;
+        background: $glass-bg;
+        border: 1px solid rgba($accent-main, 0.4);
+        text-decoration: none;
+        transition: $transition-main;
+        backdrop-filter: $glass-blur;
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: $accent-main;
+            box-shadow: $shadow-accent;
+        }
+
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__badge {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba($accent-main, 0.4);
+            font-size: 12px;
+            font-family: $font-title;
+            color: $white-main;
+        }
+
+        &__rating {
+            color: $accent-main;
+            font-family: $font-title;
+            font-size: 28px;
+        }
+
+        &__info {
+            h4 {
+                color: $white-main;
+                font-size: 20px;
+                font-family: $font-title;
+            }
+
+            p {
+                color: $white-soft;
+                font-size: 15px;
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+
+            span:last-child {
+                color: $accent-main;
+                font-family: $font-title;
+            }
+        }
+    }
+
+    &-tabs {
+        display: flex;
+        gap: 16px;
+
+        &__btn {
+            padding: 14px 22px;
+            border-radius: 999px;
+            border: 1px solid rgba($accent-main, 0.4);
+            background: transparent;
+            color: $white-main;
+            font-family: $font-title;
+            cursor: pointer;
+            transition: $transition-main;
+
+            &:hover {
+                border-color: $accent-main;
+                color: $accent-main;
+            }
+
+            &.active {
+                background: $accent-gradient;
+                color: $white-main;
+                border-color: transparent;
+            }
+        }
+    }
+
+    &-pane {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    &-slider {
+        padding-bottom: 24px;
+
+        .swiper-slide {
+            height: auto;
+        }
+
+        &__nav {
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        &__btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba($accent-main, 0.5);
+            background: $glass-bg;
+            color: $accent-main;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: $transition-main;
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            path {
+                stroke: currentColor;
+                stroke-width: 2;
+                fill: none;
+            }
+        }
+    }
+}
+
+.review-card {
+    height: 100%;
+    padding: 24px;
+    border-radius: 20px;
+    background: $glass-bg;
+    border: 1px solid rgba($accent-main, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: $transition-main;
+    backdrop-filter: $glass-blur;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-accent;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__author {
+        strong {
+            color: $white-main;
+            font-family: $font-title;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        span {
+            color: $white-muted;
+            font-size: 12px;
+        }
+    }
+
+    &__rating {
+        color: $accent-main;
+        font-family: $font-title;
+    }
+
+    &__text {
+        color: $white-soft;
+        font-size: 15px;
+        line-height: 1.5;
+        flex-grow: 1;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+
+        span {
+            color: $white-muted;
+        }
+
+        a {
+            color: $accent-main;
+            text-decoration: none;
+            font-family: $font-title;
+
+            &:hover {
+                color: $white-main;
+            }
+        }
+    }
+}
+
 //  faq
 .faq {
     width: 100%;
@@ -1279,64 +1547,88 @@ ol {
 }
 
 // контакты
-.contacts {
+.contact-section {
     width: 100%;
     padding: 120px 40px;
-    background: $black-soft;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%),
+        $black-soft;
 
-    &-container {
+    &__container {
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: minmax(320px, 520px) minmax(320px, 1fr);
-        gap: 60px;
-        align-items: stretch;
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     &__head {
-        margin-bottom: 48px;
+        max-width: 780px;
+        margin-bottom: 42px;
+    }
 
-        h3 {
+    &__subtitle {
+        margin-bottom: 14px;
+        color: $accent-main;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        margin-bottom: 18px;
+        color: $white-main;
+        font-size: clamp(42px, 4.6vw, 76px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        text-transform: none;
+
+        span {
             color: $accent-main;
-            font-size: 20px;
-            font-family: $font-main;
-            font-weight: 700;
-            line-height: 1.2;
         }
+    }
 
-        h2 {
-            margin-bottom: 32px;
-            color: $white-main;
-            font-size: clamp(42px, 4.6vw, 76px);
-            line-height: 1.08;
-            letter-spacing: -0.02em;
-            text-transform: none;
+    &__text {
+        max-width: 680px;
+        color: $white-soft;
+        font-size: clamp(15px, 1.05vw, 18px);
+        line-height: 1.72;
+    }
 
-            span {
-                color: $accent-main;
-            }
-        }
+    &__inner {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+        gap: 24px;
+        align-items: start;
+    }
 
-        p {
-            max-width: 500px;
-            color: $white-soft;
-            font-size: 18px;
-            line-height: 1.75;
+    &__left {
+        display: grid;
+        gap: 24px;
+    }
+
+    &__map,
+    &__info,
+    &__form-wrap {
+        border: 1px solid $border-soft;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(14px);
+    }
+
+    &__map {
+        overflow: hidden;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            border: none;
+            display: block;
+            filter: grayscale(1) brightness(0.85) contrast(1.05);
         }
     }
 
     &__info {
-        display: flex;
-        flex-direction: column;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        margin-bottom: 40px;
+        padding: 10px 28px;
     }
 
     &__row {
@@ -1346,13 +1638,17 @@ ol {
         gap: 24px;
         padding: 22px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+        &:last-child {
+            border-bottom: none;
+        }
     }
 
     &__label {
         min-width: 140px;
         color: rgba(255, 255, 255, 0.55);
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 13px;
+        font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
     }
@@ -1360,45 +1656,166 @@ ol {
     &__value {
         flex: 1;
         color: $white-main;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 500;
-        line-height: 1.5;
+        line-height: 1.6;
         text-align: right;
         transition: color 0.3s ease;
     }
 
-    a.contacts__value:hover {
+    a.contact-section__value:hover {
         color: $accent-main;
     }
 
-    &__actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+    &__form-wrap {
+        padding: 28px;
     }
 
-    &__map {
-        min-height: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        overflow: hidden;
+    &__form {
+        width: 100%;
+    }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 640px;
-            border: none;
-            filter: grayscale(1) brightness(0.85) contrast(1.05);
+    &__form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        span {
+            color: $white-main;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.2;
         }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            outline: none;
+            background: rgba(255, 255, 255, 0.03);
+            color: $white-main;
+            font-size: 15px;
+            line-height: 1.4;
+            transition:
+                border-color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            padding-right: 52px;
+            background:
+                linear-gradient(45deg, transparent 50%, rgba(216, 160, 22, 0.9) 50%),
+                linear-gradient(135deg, rgba(216, 160, 22, 0.9) 50%, transparent 50%),
+                rgba(255, 255, 255, 0.03);
+            background-position:
+                calc(100% - 22px) calc(50% - 3px),
+                calc(100% - 16px) calc(50% - 3px),
+                0 0;
+            background-size:
+                6px 6px,
+                6px 6px,
+                100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        select option {
+            color: #111;
+            background: #fff;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: rgba(216, 160, 22, 0.45);
+            background: rgba(255, 255, 255, 0.045);
+            box-shadow: 0 0 0 4px rgba(216, 160, 22, 0.08);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        &--full {
+            margin-bottom: 22px;
+        }
+    }
+
+    &__car-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 2px;
+    }
+
+    &__car-meta-item {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 8px 12px;
+        border: 1px solid rgba(216, 160, 22, 0.16);
+        background: rgba(216, 160, 22, 0.06);
+        color: $accent-main;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 20px;
+    }
+
+    &__policy {
+        max-width: 460px;
+        color: rgba(255, 255, 255, 0.46);
+        font-size: 13px;
+        line-height: 1.6;
+
+        a {
+            color: $white-main;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $accent-main;
+            }
+        }
+    }
+
+    &__btn {
+        min-width: 220px;
+        justify-content: center;
     }
 }
 
 @media (max-width: 1200px) {
-    .contacts {
+    .contact-section {
         padding: 100px 28px;
 
-        &-container {
+        &__inner {
             grid-template-columns: 1fr;
-            gap: 40px;
         }
 
         &__map {
@@ -1410,26 +1827,25 @@ ol {
 }
 
 @media (max-width: 768px) {
-    .contacts {
+    .contact-section {
         padding: 80px 20px;
 
         &__head {
-            margin-bottom: 36px;
+            margin-bottom: 32px;
+        }
 
-            h3 {
-                margin-bottom: 18px;
-                font-size: 18px;
-            }
+        &__title {
+            font-size: clamp(34px, 8vw, 52px);
+        }
 
-            h2 {
-                margin-bottom: 24px;
-                font-size: clamp(34px, 8vw, 52px);
-            }
+        &__text {
+            font-size: 16px;
+            line-height: 1.7;
+        }
 
-            p {
-                font-size: 16px;
-                line-height: 1.7;
-            }
+        &__info,
+        &__form-wrap {
+            padding: 20px;
         }
 
         &__row {
@@ -1444,38 +1860,43 @@ ol {
         }
 
         &__value {
-            font-size: 18px;
+            font-size: 17px;
             text-align: left;
         }
 
-        &__actions {
-            flex-direction: column;
+        &__form-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
 
-            .btn {
-                width: 100%;
-            }
+        &__bottom {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        &__btn {
+            width: 100%;
+            min-width: 0;
         }
 
         &__map {
             iframe {
-                min-height: 420px;
+                min-height: 400px;
             }
         }
     }
 }
 
 @media (max-width: 480px) {
-    .contacts {
+    .contact-section {
         padding: 64px 16px;
 
-        &__head {
-            h2 {
-                font-size: clamp(28px, 9vw, 40px);
-            }
+        &__title {
+            font-size: clamp(28px, 9vw, 40px);
+        }
 
-            p {
-                font-size: 15px;
-            }
+        &__text {
+            font-size: 15px;
         }
 
         &__value {
@@ -1484,7 +1905,7 @@ ol {
 
         &__map {
             iframe {
-                min-height: 340px;
+                min-height: 320px;
             }
         }
     }

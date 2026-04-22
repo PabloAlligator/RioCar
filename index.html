@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="site/styles/main.css" />
   <title>RioCar</title>
 </head>
@@ -34,7 +35,7 @@
         </p>
 
         <div class="hero-main__actions">
-          <a href="#catalog" class="btn btn--primary">Выбрать автомобиль</a>
+          <a href="site/pages/cars.html" class="btn btn--primary">Выбрать автомобиль</a>
           <a href="#form" class="btn btn--secondary">Оставить заявку</a>
         </div>
 
@@ -100,11 +101,297 @@
             от поездок по городу до путешествий по Хакасии.
           </p>
 
-          <a href="#catalog" class="btn btn--primary">Выбрать автомобиль</a>
+          <a href="site/pages/cars.html" class="btn btn--primary">Выбрать автомобиль</a>
         </div>
 
         <div class="advantages__img">
           <img src="site/image/black-lexus.jpg" alt="Автомобиль RioCar в Абакане">
+        </div>
+      </div>
+    </section>
+
+    <!-- reviews -->
+
+    <section class="reviews" id="reviews">
+      <div class="reviews-container">
+        <div class="general-title">
+          <h2>ОТЗЫВЫ</h2>
+          <h3>НАМ ДОВЕРЯЮТ НА НЕЗАВИСИМЫХ ПЛОЩАДКАХ</h3>
+        </div>
+
+        <div class="reviews-platforms">
+          <a href="https://yandex.com/maps/org/riocar/1729085988/?ll=91.438983%2C53.742869&z=17"
+            class="reviews-platform reviews-platform--yandex" target="_blank" rel="noopener noreferrer">
+            <div class="reviews-platform__top">
+              <span class="reviews-platform__badge">Яндекс Карты</span>
+              <span class="reviews-platform__rating">5/5</span>
+            </div>
+
+            <div class="reviews-platform__info">
+              <h4>Отзывы из Яндекс Карт</h4>
+              <p>Смотрите реальные оценки, впечатления клиентов и отзывы об аренде автомобилей RioCar.</p>
+            </div>
+
+            <div class="reviews-platform__bottom">
+              <span>Открыть площадку</span>
+              <span>Читать отзывы</span>
+            </div>
+          </a>
+
+          <a href="https://2gis.ru/abakan/search/%D1%80%D0%B8%D0%BE%D0%BA%D0%B0%D1%80/firm/9711414977520285/91.438035%2C53.74277?m=91.419129%2C53.744968%2F15.49"
+            class="reviews-platform reviews-platform--2gis" target="_blank" rel="noopener noreferrer">
+            <div class="reviews-platform__top">
+              <span class="reviews-platform__badge">2ГИС</span>
+              <span class="reviews-platform__rating">5/5</span>
+            </div>
+
+            <div class="reviews-platform__info">
+              <h4>Отзывы из 2ГИС</h4>
+              <p>Независимые отзывы о сервисе, состоянии автомобилей и качестве обслуживания в RioCar.</p>
+            </div>
+
+            <div class="reviews-platform__bottom">
+              <span>Открыть площадку</span>
+              <span>Читать отзывы</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="reviews-tabs">
+          <button class="reviews-tabs__btn active" type="button" data-review-tab="yandex">
+            Яндекс Карты
+          </button>
+          <button class="reviews-tabs__btn" type="button" data-review-tab="gis">
+            2ГИС
+          </button>
+        </div>
+
+        <div class="reviews-pane active" id="reviews-yandex">
+          <div class="reviews-slider swiper reviews-swiper-yandex">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Александр</strong>
+                      <span>Яндекс Карты</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Брали Toyota Camry на несколько дней. Всё оформили быстро, машина была чистая и в хорошем состоянии.
+                    Поездка прошла спокойно, сервис понравился.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Февраль 2026</span>
+                    <a href="https://yandex.com/maps/org/riocar/1729085988/?ll=91.438983%2C53.742869&z=17"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Марина</strong>
+                      <span>Яндекс Карты</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Нужна была машина для поездки за город. Подобрали подходящий вариант, всё объяснили по условиям,
+                    общение приятное, без суеты и лишних сложностей.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Январь 2026</span>
+                    <a href="https://yandex.com/maps/org/riocar/1729085988/?ll=91.438983%2C53.742869&z=17"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Игорь</strong>
+                      <span>Яндекс Карты</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Понравилось, что всё честно и понятно. Машину выдали вовремя, салон чистый,
+                    по состоянию автомобиля вопросов не было. Будем обращаться ещё.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Декабрь 2025</span>
+                    <a href="https://yandex.com/maps/org/riocar/1729085988/?ll=91.438983%2C53.742869&z=17"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Дмитрий</strong>
+                      <span>Яндекс Карты</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Брали авто для поездки по Хакасии. Очень удобно, что можно быстро подобрать машину под маршрут.
+                    Сервис аккуратный, всё на хорошем уровне.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Ноябрь 2025</span>
+                    <a href="https://yandex.com/maps/org/riocar/1729085988/?ll=91.438983%2C53.742869&z=17"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="reviews-slider__nav">
+              <button class="reviews-slider__btn reviews-slider__btn--prev reviews-slider__btn--prev-yandex"
+                type="button" aria-label="Назад">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15 6L9 12L15 18" />
+                </svg>
+              </button>
+
+              <button class="reviews-slider__btn reviews-slider__btn--next reviews-slider__btn--next-yandex"
+                type="button" aria-label="Вперёд">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 6L15 12L9 18" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-pane" id="reviews-gis">
+          <div class="reviews-slider swiper reviews-swiper-gis">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Екатерина</strong>
+                      <span>2ГИС</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Очень понравился подход. Быстро вышли на связь, помогли подобрать автомобиль
+                    и всё подробно рассказали по аренде. Машина была в отличном состоянии.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Февраль 2026</span>
+                    <a href="https://2gis.ru/abakan/search/%D1%80%D0%B8%D0%BE%D0%BA%D0%B0%D1%80/firm/9711414977520285/91.438035%2C53.74277?m=91.419129%2C53.744968%2F15.49"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Ольга</strong>
+                      <span>2ГИС</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Бронировали машину заранее для семейной поездки. Всё прошло очень спокойно:
+                    без задержек, без неприятных сюрпризов, с нормальным человеческим отношением.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Январь 2026</span>
+                    <a href="https://2gis.ru/abakan/search/%D1%80%D0%B8%D0%BE%D0%BA%D0%B0%D1%80/firm/9711414977520285/91.438035%2C53.74277?m=91.419129%2C53.744968%2F15.49"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Андрей</strong>
+                      <span>2ГИС</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Хороший сервис, всё понятно по условиям, машина чистая и ухоженная.
+                    Для поездки по Абакану и за город подошло отлично.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Декабрь 2025</span>
+                    <a href="https://2gis.ru/abakan/search/%D1%80%D0%B8%D0%BE%D0%BA%D0%B0%D1%80/firm/9711414977520285/91.438035%2C53.74277?m=91.419129%2C53.744968%2F15.49"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="review-card">
+                  <div class="review-card__top">
+                    <div class="review-card__author">
+                      <strong>Никита</strong>
+                      <span>2ГИС</span>
+                    </div>
+                    <div class="review-card__rating">5/5</div>
+                  </div>
+
+                  <p class="review-card__text">
+                    Пользовались услугами RioCar впервые. Остались довольны: быстрое оформление,
+                    понятные условия, хороший выбор автомобилей и приятное общение.
+                  </p>
+
+                  <div class="review-card__bottom">
+                    <span>Ноябрь 2025</span>
+                    <a href="https://2gis.ru/abakan/search/%D1%80%D0%B8%D0%BE%D0%BA%D0%B0%D1%80/firm/9711414977520285/91.438035%2C53.74277?m=91.419129%2C53.744968%2F15.49"
+                      target="_blank" rel="noopener noreferrer">Открыть</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="reviews-slider__nav">
+              <button class="reviews-slider__btn reviews-slider__btn--prev reviews-slider__btn--prev-gis" type="button"
+                aria-label="Назад">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15 6L9 12L15 18" />
+                </svg>
+              </button>
+
+              <button class="reviews-slider__btn reviews-slider__btn--next reviews-slider__btn--next-gis" type="button"
+                aria-label="Вперёд">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 6L15 12L9 18" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -181,20 +468,6 @@
           </div>
 
           <div class="faq__item" role="listitem">
-            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-5"
-              id="faq-question-5">
-              <span>Есть ли ограничения по пробегу?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
-              <div class="faq__answer-content">
-                Условия по пробегу зависят от выбранного автомобиля и формата аренды. Уточните этот момент при
-                бронировании, и мы сразу подскажем точные условия по нужной машине.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq__item" role="listitem">
             <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-6"
               id="faq-question-6">
               <span>Можно ли заказать доставку автомобиля по городу?</span>
@@ -262,7 +535,7 @@
             Полный опыт будет доступен в приложении — с расширенными возможностями и удобным планированием путешествий.
           </p>
 
-          <a href="/routes.html" class="btn btn--primary reveal reveal--5">
+          <a href="site/pages/travel.html" class="btn btn--primary reveal reveal--5">
             Смотреть маршруты
           </a>
         </div>
@@ -270,57 +543,169 @@
     </section>
 
     <!-- контакты -->
-     
-    <section class="contacts" id="contacts">
-      <div class="contacts-container">
-        <div class="contacts__content">
-          <div class="contacts__head">
-            <h3>Контакты RioCar</h3>
 
-            <h2>
-              Свяжитесь с <span>нами</span>
-            </h2>
+    <section class="contact-section" id="contacts" aria-labelledby="contact-section-title">
+      <div class="contact-section__container">
+        <div class="contact-section__head">
+          <p class="contact-section__subtitle">Контакты RioCar</p>
 
-            <p>
-              Подберём автомобиль для аренды в Абакане, ответим по условиям,
-              стоимости, бронированию и поездкам по Хакасии и за её пределами.
-            </p>
-          </div>
+          <h2 id="contact-section-title" class="contact-section__title">
+            Свяжитесь с <span>нами</span>
+          </h2>
 
-          <div class="contacts__info">
-            <div class="contacts__row">
-              <span class="contacts__label">Телефон</span>
-              <a href="tel:+79135444442" class="contacts__value">+7 (913) 544-44-42</a>
-            </div>
-
-            <div class="contacts__row">
-              <span class="contacts__label">MAX</span>
-              <a href="https://wa.me/79135444442" target="_blank" rel="noopener noreferrer" class="contacts__value">
-                Написать в MAX
-              </a>
-            </div>
-
-            <div class="contacts__row">
-              <span class="contacts__label">Адрес</span>
-              <span class="contacts__value">г. Абакан, ул. Торговая, 1</span>
-            </div>
-
-            <div class="contacts__row">
-              <span class="contacts__label">Режим работы</span>
-              <span class="contacts__value">Ежедневно с 09:00 до 21:00</span>
-            </div>
-          </div>
-
-          <div class="contacts__actions">
-            <a href="tel:+79135444442" class="btn btn--primary">Позвонить</a>
-            <a href="#form" class="btn btn--secondary">Оставить заявку</a>
-          </div>
+          <p class="contact-section__text">
+            Подберём автомобиль для аренды в Абакане, ответим по условиям,
+            стоимости, бронированию и поездкам по Хакасии и за её пределами.
+          </p>
         </div>
 
-        <div class="contacts__map">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&amp;source=constructor" loading="lazy"
-            allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Карта RioCar">
-          </iframe>
+        <div class="contact-section__inner">
+          <div class="contact-section__left">
+            <div class="contact-section__map">
+              <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&amp;source=constructor"
+                loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Карта RioCar">
+              </iframe>
+            </div>
+
+            <div class="contact-section__info">
+              <div class="contact-section__row">
+                <span class="contact-section__label">Телефон</span>
+                <a href="tel:+79135444442" class="contact-section__value">+7 (913) 544-44-42</a>
+              </div>
+
+              <div class="contact-section__row">
+                <span class="contact-section__label">MAX</span>
+                <a href="https://wa.me/79135444442" target="_blank" rel="noopener noreferrer"
+                  class="contact-section__value">
+                  Написать в MAX
+                </a>
+              </div>
+
+              <div class="contact-section__row">
+                <span class="contact-section__label">Адрес</span>
+                <span class="contact-section__value">г. Абакан, ул. Торговая, 1</span>
+              </div>
+
+              <div class="contact-section__row">
+                <span class="contact-section__label">Режим работы</span>
+                <span class="contact-section__value">Ежедневно с 09:00 до 17:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-section__form-wrap">
+            <form class="contact-section__form" action="#" method="post" id="form">
+              <div class="contact-section__form-grid">
+                <label class="contact-section__field">
+                  <span>Ваше имя</span>
+                  <input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
+                </label>
+
+                <label class="contact-section__field">
+                  <span>Телефон</span>
+                  <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+                </label>
+
+                <label class="contact-section__field contact-section__field--car">
+                  <span>Какой автомобиль вас интересует</span>
+
+                  <select name="car" id="contactCarSelect" required>
+                    <option value="" disabled selected>Выберите автомобиль</option>
+
+                    <option value="Toyota Land Cruiser 200" data-base-title="Toyota Land Cruiser 200" data-year="2016"
+                      data-price="от 12 750 ₽ / сутки">
+                      Toyota Land Cruiser 200 — 2016
+                    </option>
+
+                    <option value="Toyota Land Cruiser 200 с водителем"
+                      data-base-title="Toyota Land Cruiser 200 с водителем" data-year="2023"
+                      data-price="от 22 500 ₽ / сутки">
+                      Toyota Land Cruiser 200 с водителем — 2023
+                    </option>
+
+                    <option value="Mercedes Benz E-300" data-base-title="Mercedes Benz E-300" data-year="2015"
+                      data-price="от 7 380 ₽ / сутки">
+                      Mercedes Benz E-300 — 2015
+                    </option>
+
+                    <option value="Toyota Camry 2023" data-base-title="Toyota Camry" data-year="2023"
+                      data-price="от 6 150 ₽ / сутки">
+                      Toyota Camry — 2023
+                    </option>
+
+                    <option value="Toyota Camry 2017" data-base-title="Toyota Camry" data-year="2017"
+                      data-price="от 6 150 ₽ / сутки">
+                      Toyota Camry — 2017
+                    </option>
+
+                    <option value="Toyota Camry 2015" data-base-title="Toyota Camry" data-year="2015"
+                      data-price="от 4 920 ₽ / сутки">
+                      Toyota Camry — 2015
+                    </option>
+
+                    <option value="Toyota Camry 2013" data-base-title="Toyota Camry" data-year="2013"
+                      data-price="от 4 505 ₽ / сутки">
+                      Toyota Camry — 2013
+                    </option>
+
+                    <option value="Toyota Camry 2010" data-base-title="Toyota Camry" data-year="2010"
+                      data-price="от 3 600 ₽ / сутки">
+                      Toyota Camry — 2010
+                    </option>
+
+                    <option value="Toyota RAV 4" data-base-title="Toyota RAV 4" data-year="2014"
+                      data-price="от 5 200 ₽ / сутки">
+                      Toyota RAV 4 — 2014
+                    </option>
+
+                    <option value="Hyundai Solaris" data-base-title="Hyundai Solaris" data-year="2018"
+                      data-price="от 2 870 ₽ / сутки">
+                      Hyundai Solaris — 2018
+                    </option>
+
+                    <option value="Kia Rio" data-base-title="Kia Rio" data-year="2018" data-price="от 2 870 ₽ / сутки">
+                      Kia Rio — 2018
+                    </option>
+
+                    <option value="Honda Stepwgn Spada" data-base-title="Honda Stepwgn Spada" data-year="2015"
+                      data-price="от 6 150 ₽ / сутки">
+                      Honda Stepwgn Spada — 2015
+                    </option>
+                  </select>
+
+                  <!-- <div class="contact-section__car-meta" id="contactCarMeta" hidden>
+                                <span class="contact-section__car-meta-item" id="contactCarMetaYear"></span>
+                                <span class="contact-section__car-meta-item" id="contactCarMetaPrice"></span>
+                            </div> -->
+                </label>
+
+                <label class="contact-section__field">
+                  <span>Дата поездки</span>
+                  <input type="text" name="date" placeholder="Например: 15–17 августа">
+                </label>
+              </div>
+
+              <input type="hidden" name="car_year" id="contactCarYear">
+              <input type="hidden" name="car_price" id="contactCarPrice">
+
+              <label class="contact-section__field contact-section__field--full">
+                <span>Комментарий</span>
+                <textarea name="message" rows="5"
+                  placeholder="Напишите, куда планируете поехать, сколько человек будет в поездке и какой автомобиль нужен"></textarea>
+              </label>
+
+              <div class="contact-section__bottom">
+                <p class="contact-section__policy">
+                  Нажимая кнопку, вы соглашаетесь c
+                  <a href="#">политикой конфиденциальности</a>.
+                </p>
+
+                <button type="submit" class="contact-section__btn btn btn--primary">
+                  Отправить заявку
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -329,6 +714,7 @@
 
   <div data-include="components/footer.html"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="site/scripts/main.js"></script>
 </body>
 

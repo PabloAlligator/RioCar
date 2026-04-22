@@ -503,7 +503,15 @@ ol {
     overflow: hidden;
     background: $black-card;
     border: 1px solid $border-soft;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        filter 0.28s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    transform-origin: center center;
+    will-change: transform, opacity;
 
     &:hover {
         transform: translateY(-4px);
