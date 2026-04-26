@@ -441,6 +441,152 @@ function initPhoneMask() {
     });
 }
 
+function normalizePhone(phone) {
+    if (!phone) return '';
+
+    const digits = phone.replace(/\D/g, '');
+
+    if (digits.length === 11 && digits.startsWith('8')) return digits;
+    if (digits.length === 11 && digits.startsWith('7')) return `8${digits.slice(1)}`;
+    if (digits.length === 10) return `8${digits}`;
+
+    return '';
+}
+
+function isValidRussianPhone(phone) {
+    return /^89\d{9}$/.test(normalizePhone(phone));
+}
+
+function formatPhoneForSend(phone) {
+    const normalized = normalizePhone(phone);
+
+    if (!normalized) return '';
+
+    return `+7 (${normalized.slice(1, 4)}) ${normalized.slice(4, 7)}-${normalized.slice(7, 9)}-${normalized.slice(9, 11)}`;
+}
+function initContactFormSubmit() {
+    const form = document.getElementById('form');
+    if (!form) return;
+
+    const formStartTime = Date.now();
+
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+
+    const showError = (title, text) => {
+        if (!errorMsg) return;
+
+        const titleEl = errorMsg.querySelector('h3');
+        const textEl = errorMsg.querySelector('p');
+
+        if (titleEl) titleEl.textContent = title;
+        if (textEl) textEl.textContent = text;
+
+        errorMsg.style.display = 'block';
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    const resetState = () => {
+        if (successMsg) successMsg.style.display = 'none';
+        if (errorMsg) errorMsg.style.display = 'none';
+
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Отправить заявку';
+    };
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        resetState();
+
+        if (Date.now() - formStartTime < 2000) {
+            showError('Подождите', 'Попробуйте отправить форму чуть позже.');
+            return;
+        }
+
+        const formData = new FormData(form);
+
+        const name = (formData.get('name') || '').toString().trim();
+        const phone = (formData.get('phone') || '').toString().trim();
+        const car = (formData.get('car') || '').toString().trim();
+        const tripDate = (formData.get('date') || '').toString().trim();
+        const carYear = (formData.get('car_year') || '').toString().trim();
+        const carPrice = (formData.get('car_price') || '').toString().trim();
+        const message = (formData.get('message') || '').toString().trim();
+        const website = (formData.get('website') || '').toString().trim();
+
+        if (website) return;
+
+        if (!name || name.length < 2 || name.length > 60) {
+            showError('Проверьте имя', 'Введите имя от 2 до 60 символов.');
+            return;
+        }
+
+        if (!isValidRussianPhone(phone)) {
+            showError('Проверьте телефон', 'Введите корректный номер телефона.');
+            return;
+        }
+
+        if (!car) {
+            showError('Выберите автомобиль', 'Нужно выбрать автомобиль перед отправкой.');
+            return;
+        }
+
+        if (message.length > 900) {
+            showError('Слишком длинный комментарий', 'Комментарий должен быть не длиннее 900 символов.');
+            return;
+        }
+
+        const data = {
+            name,
+            phone: formatPhoneForSend(phone),
+            car,
+            date: tripDate || '—',
+            car_year: carYear || '—',
+            car_price: carPrice || '—',
+            message: message || '—',
+            website,
+            page: window.location.pathname,
+            form_time: formStartTime
+        };
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnText) btnText.textContent = 'Отправляем...';
+
+        try {
+            const response = await fetch('/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || 'Ошибка отправки');
+            }
+
+            if (successMsg) {
+                successMsg.style.display = 'block';
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            if (errorMsg) errorMsg.style.display = 'none';
+
+            form.reset();
+            initContactCarSelect();
+        } catch (error) {
+            showError('Ошибка отправки', 'Попробуйте позже или свяжитесь с нами по телефону.');
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+            if (btnText) btnText.textContent = 'Отправить заявку';
+        }
+    });
+}
+
 // вызов
 async function initApp() {
     await loadComponents();
@@ -451,6 +597,7 @@ async function initApp() {
     initRoutesPreviewReveal();
     initContactCarSelect();
     initPhoneMask();
+    initContactFormSubmit();
     initReviewsTabs();
     initReviewsSliders();
 }

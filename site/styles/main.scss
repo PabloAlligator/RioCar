@@ -1673,6 +1673,13 @@ ol {
 
     &__form {
         width: 100%;
+
+        .hp-field {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     &__form-grid {

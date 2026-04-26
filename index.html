@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="icon" href="site/image/logo-mini.png">
   <link rel="stylesheet" href="site/styles/main.css" />
   <title>RioCar</title>
 </head>
@@ -575,8 +576,8 @@
 
               <div class="contact-section__row">
                 <span class="contact-section__label">MAX</span>
-                <a href="https://wa.me/79135444442" target="_blank" rel="noopener noreferrer"
-                  class="contact-section__value">
+                <a href="https://max.ru/u/f9LHodD0cOJqcWwh7GT0wEd-bx6rZkAdHNzd8vtUnBMThtehF4DutO8K8Q4" target="_blank"
+                  rel="noopener noreferrer" class="contact-section__value">
                   Написать в MAX
                 </a>
               </div>
@@ -595,7 +596,24 @@
 
           <div class="contact-section__form-wrap">
             <form class="contact-section__form" action="#" method="post" id="form">
+
+              <!-- SUCCESS -->
+              <div class="form-success" id="successMessage" style="display: none;">
+                <h3>Заявка отправлена!</h3>
+                <p>Мы получили вашу заявку и свяжемся в ближайшее время.</p>
+              </div>
+
+              <!-- ERROR -->
+              <div class="form-error" id="errorMessage" style="display: none;">
+                <h3>Ошибка отправки</h3>
+                <p>Попробуйте позже или позвоните нам.</p>
+              </div>
+
+              <!-- HONEYPOT -->
+              <input type="text" name="website" autocomplete="off" tabindex="-1" class="hp-field">
+
               <div class="contact-section__form-grid">
+
                 <label class="contact-section__field">
                   <span>Ваше имя</span>
                   <input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
@@ -612,79 +630,65 @@
                   <select name="car" id="contactCarSelect" required>
                     <option value="" disabled selected>Выберите автомобиль</option>
 
-                    <option value="Toyota Land Cruiser 200" data-base-title="Toyota Land Cruiser 200" data-year="2016"
-                      data-price="от 12 750 ₽ / сутки">
+                    <option value="Toyota Land Cruiser 200" data-year="2016" data-price="от 12 750 ₽ / сутки">
                       Toyota Land Cruiser 200 — 2016
                     </option>
 
-                    <option value="Toyota Land Cruiser 200 с водителем"
-                      data-base-title="Toyota Land Cruiser 200 с водителем" data-year="2023"
+                    <option value="Toyota Land Cruiser 200 с водителем" data-year="2023"
                       data-price="от 22 500 ₽ / сутки">
                       Toyota Land Cruiser 200 с водителем — 2023
                     </option>
 
-                    <option value="Mercedes Benz E-300" data-base-title="Mercedes Benz E-300" data-year="2015"
-                      data-price="от 7 380 ₽ / сутки">
+                    <option value="Mercedes Benz E-300" data-year="2015" data-price="от 7 380 ₽ / сутки">
                       Mercedes Benz E-300 — 2015
                     </option>
 
-                    <option value="Toyota Camry 2023" data-base-title="Toyota Camry" data-year="2023"
-                      data-price="от 6 150 ₽ / сутки">
+                    <option value="Toyota Camry 2023" data-year="2023" data-price="от 6 150 ₽ / сутки">
                       Toyota Camry — 2023
                     </option>
 
-                    <option value="Toyota Camry 2017" data-base-title="Toyota Camry" data-year="2017"
-                      data-price="от 6 150 ₽ / сутки">
+                    <option value="Toyota Camry 2017" data-year="2017" data-price="от 6 150 ₽ / сутки">
                       Toyota Camry — 2017
                     </option>
 
-                    <option value="Toyota Camry 2015" data-base-title="Toyota Camry" data-year="2015"
-                      data-price="от 4 920 ₽ / сутки">
+                    <option value="Toyota Camry 2015" data-year="2015" data-price="от 4 920 ₽ / сутки">
                       Toyota Camry — 2015
                     </option>
 
-                    <option value="Toyota Camry 2013" data-base-title="Toyota Camry" data-year="2013"
-                      data-price="от 4 505 ₽ / сутки">
+                    <option value="Toyota Camry 2013" data-year="2013" data-price="от 4 505 ₽ / сутки">
                       Toyota Camry — 2013
                     </option>
 
-                    <option value="Toyota Camry 2010" data-base-title="Toyota Camry" data-year="2010"
-                      data-price="от 3 600 ₽ / сутки">
+                    <option value="Toyota Camry 2010" data-year="2010" data-price="от 3 600 ₽ / сутки">
                       Toyota Camry — 2010
                     </option>
 
-                    <option value="Toyota RAV 4" data-base-title="Toyota RAV 4" data-year="2014"
-                      data-price="от 5 200 ₽ / сутки">
+                    <option value="Toyota RAV 4" data-year="2014" data-price="от 5 200 ₽ / сутки">
                       Toyota RAV 4 — 2014
                     </option>
 
-                    <option value="Hyundai Solaris" data-base-title="Hyundai Solaris" data-year="2018"
-                      data-price="от 2 870 ₽ / сутки">
+                    <option value="Hyundai Solaris" data-year="2018" data-price="от 2 870 ₽ / сутки">
                       Hyundai Solaris — 2018
                     </option>
 
-                    <option value="Kia Rio" data-base-title="Kia Rio" data-year="2018" data-price="от 2 870 ₽ / сутки">
+                    <option value="Kia Rio" data-year="2018" data-price="от 2 870 ₽ / сутки">
                       Kia Rio — 2018
                     </option>
 
-                    <option value="Honda Stepwgn Spada" data-base-title="Honda Stepwgn Spada" data-year="2015"
-                      data-price="от 6 150 ₽ / сутки">
+                    <option value="Honda Stepwgn Spada" data-year="2015" data-price="от 6 150 ₽ / сутки">
                       Honda Stepwgn Spada — 2015
                     </option>
                   </select>
-
-                  <!-- <div class="contact-section__car-meta" id="contactCarMeta" hidden>
-                                <span class="contact-section__car-meta-item" id="contactCarMetaYear"></span>
-                                <span class="contact-section__car-meta-item" id="contactCarMetaPrice"></span>
-                            </div> -->
                 </label>
 
                 <label class="contact-section__field">
                   <span>Дата поездки</span>
                   <input type="text" name="date" placeholder="Например: 15–17 августа">
                 </label>
+
               </div>
 
+              <!-- скрытые поля -->
               <input type="hidden" name="car_year" id="contactCarYear">
               <input type="hidden" name="car_price" id="contactCarPrice">
 
@@ -700,10 +704,11 @@
                   <a href="#">политикой конфиденциальности</a>.
                 </p>
 
-                <button type="submit" class="contact-section__btn btn btn--primary">
-                  Отправить заявку
+                <button type="submit" class="contact-section__btn btn btn--primary" id="submitBtn">
+                  <span class="btn-text">Отправить заявку</span>
                 </button>
               </div>
+
             </form>
           </div>
         </div>

@@ -1734,6 +1734,12 @@ ol {
 .contact-section__form {
   width: 100%;
 }
+.contact-section__form .hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
 .contact-section__form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
