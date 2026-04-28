@@ -287,7 +287,7 @@ body.menu-open {
 }
 .footer__top {
   display: grid;
-  grid-template-columns: minmax(280px, 1.2fr) minmax(180px, 0.8fr) minmax(240px, 1fr);
+  grid-template-columns: minmax(280px, 420px) 1fr;
   gap: 48px;
   padding-bottom: 36px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -312,6 +312,13 @@ body.menu-open {
   color: #cfcfcf;
   font-size: 15px;
   line-height: 1.75;
+}
+.footer-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
 }
 .footer__menu h3, .footer__contacts h3 {
   margin-bottom: 22px;
@@ -342,7 +349,6 @@ body.menu-open {
   line-height: 1.6;
 }
 .footer__contacts {
-  gap: 12px;
   align-items: flex-start;
 }
 .footer__contact:hover {
