@@ -2,6 +2,7 @@ import express, { Router } from 'express';
 import { randomUUID } from 'node:crypto';
 import { mkdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 
 import prisma from '../lib/prisma.js';
@@ -22,6 +23,8 @@ const CAR_CATEGORIES = new Set(['ECONOM', 'COMFORT', 'PREMIUM']);
 const VISIBILITY_FILTERS = new Set(['ALL', 'ACTIVE', 'HIDDEN']);
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const MAX_IMAGES_PER_CAR = 12;
+const MAX_IMAGE_DIMENSION = 1920;
+const WEBP_QUALITY = 82;
 
 router.use((req, res, next) => {
   res.set('Cache-Control', 'no-store');
@@ -388,6 +391,26 @@ function decodeImagePayload(value) {
   return { buffer, ...type };
 }
 
+async function convertImageToWebp(buffer) {
+  return sharp(buffer, {
+    failOn: 'error',
+    limitInputPixels: 40_000_000,
+  })
+    .rotate()
+    .resize({
+      width: MAX_IMAGE_DIMENSION,
+      height: MAX_IMAGE_DIMENSION,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .webp({
+      quality: WEBP_QUALITY,
+      effort: 4,
+      smartSubsample: true,
+    })
+    .toBuffer();
+}
+
 async function removeUploadedImage(imagePath) {
   const normalizedPath = String(imagePath || '');
 
@@ -591,13 +614,24 @@ router.post('/:id/images', imageJson, requireCsrf, async (req, res, next) => {
       });
     }
 
+    let optimizedBuffer;
+
+    try {
+      optimizedBuffer = await convertImageToWebp(decoded.buffer);
+    } catch {
+      return res.status(400).json({
+        success: false,
+        message: 'Не удалось обработать изображение. Проверьте, что файл не повреждён.',
+      });
+    }
+
     await mkdir(CAR_UPLOAD_DIR, { recursive: true });
 
-    const fileName = `${car.slug}-${Date.now()}-${randomUUID().slice(0, 8)}.${decoded.extension}`;
+    const fileName = `${car.slug}-${Date.now()}-${randomUUID().slice(0, 8)}.webp`;
     const absolutePath = path.join(CAR_UPLOAD_DIR, fileName);
     uploadedPath = `/uploads/cars/${fileName}`;
 
-    await writeFile(absolutePath, decoded.buffer, { flag: 'wx' });
+    await writeFile(absolutePath, optimizedBuffer, { flag: 'wx' });
 
     const latestImage = await prisma.carImage.findFirst({
       where: { carId },

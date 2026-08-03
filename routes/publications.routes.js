@@ -2,6 +2,7 @@ import express, { Router } from 'express';
 import { randomUUID } from 'node:crypto';
 import { mkdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 
 import prisma from '../lib/prisma.js';
@@ -21,6 +22,8 @@ const imageJson = express.json({ limit: '14mb' });
 const PUBLICATION_TYPES = new Set(['NEWS', 'PROMOTION', 'OFFER']);
 const VISIBILITY_FILTERS = new Set(['ALL', 'ACTIVE', 'HIDDEN']);
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+const MAX_IMAGE_DIMENSION = 1920;
+const WEBP_QUALITY = 82;
 
 router.use((req, res, next) => {
   res.set('Cache-Control', 'no-store');
@@ -278,6 +281,26 @@ function decodeImageDataUrl(dataUrl) {
   }
 
   return { buffer, extension };
+}
+
+async function convertImageToWebp(buffer) {
+  return sharp(buffer, {
+    failOn: 'error',
+    limitInputPixels: 40_000_000,
+  })
+    .rotate()
+    .resize({
+      width: MAX_IMAGE_DIMENSION,
+      height: MAX_IMAGE_DIMENSION,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .webp({
+      quality: WEBP_QUALITY,
+      effort: 4,
+      smartSubsample: true,
+    })
+    .toBuffer();
 }
 
 function getUploadedFilePath(imagePath) {
@@ -549,13 +572,25 @@ router.post('/:id/cover', imageJson, requireCsrf, async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'Публикация не найдена.' });
     }
 
-    const { buffer, extension } = decodeImageDataUrl(req.body?.dataUrl);
-    const fileName = `${Date.now()}-${randomUUID()}.${extension}`;
+    const { buffer } = decodeImageDataUrl(req.body?.dataUrl);
+
+    let optimizedBuffer;
+
+    try {
+      optimizedBuffer = await convertImageToWebp(buffer);
+    } catch {
+      return res.status(400).json({
+        success: false,
+        message: 'Не удалось обработать изображение. Проверьте, что файл не повреждён.',
+      });
+    }
+
+    const fileName = `${Date.now()}-${randomUUID()}.webp`;
     const imagePath = `/uploads/publications/${fileName}`;
     writtenPath = path.join(PUBLICATION_UPLOAD_DIR, fileName);
 
     await mkdir(PUBLICATION_UPLOAD_DIR, { recursive: true });
-    await writeFile(writtenPath, buffer, { flag: 'wx' });
+    await writeFile(writtenPath, optimizedBuffer, { flag: 'wx' });
 
     const coverAlt =
       normalizeSingleLine(req.body?.coverAlt, 180) ||
