@@ -27,7 +27,7 @@ function service({ enabled = true, subscriptions = [], onSend = async () => {} }
     },
   };
   const source = fs.readFileSync(path.join(__dirname, '../services/push.service.js'), 'utf8')
-    .replace(/^import .*;\n/gm, '')
+    .replace(/^import .*;\r?\n/gm, '')
     .replace(/^export /gm, '') + '\nthis.exports = { pushConfigured, sendNewLeadNotification, sendTestNotification };';
   const context = { webpush, prisma, process: { env: enabled ? {
     VAPID_SUBJECT: 'mailto:test@example.com',

@@ -352,6 +352,36 @@ body.menu-open {
 .footer__contact:hover {
   color: #d8a016;
 }
+.footer__socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.footer__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #796046;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(79, 59, 43, 0.14);
+  border-radius: 50%;
+  box-shadow: 0 10px 26px rgba(47, 35, 26, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.footer__socials a:hover {
+  transform: translateY(-3px);
+  color: #fffaf4;
+  background: #796046;
+  border-color: rgba(121, 96, 70, 0.38);
+  box-shadow: 0 16px 34px rgba(47, 35, 26, 0.12);
+}
 .footer__btn {
   margin-top: 16px;
 }
