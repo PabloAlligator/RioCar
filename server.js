@@ -438,7 +438,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "127.0.0.1", () => {
   console.log(`RioCar server started: http://localhost:${PORT}`);
 });
 
